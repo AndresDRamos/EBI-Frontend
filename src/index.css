@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root,
+.app,
+.content {
+  height: 100%;
+  width: 100%;
+  font-family: "Montserrat";
+  overflow-x: hidden;
+}
+
+.app {
+  display: flex;
+  position: relative;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* TRACK */
+::-webkit-scrollbar-track {
+  background: #e0e0e0;
+}
+
+/* Handle on Hover */
+::-webkit-scrollbar-track:hover {
+  background: #555;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+body,
+html,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.report-container {
+  height: 100% !important;
+  width: 100% !important;
+  border: none !important;
+}
+
+.report-container iframe {
+  border: none !important;
+  height: 100% !important;
+  width: 100% !important;
+}
+
+/* Ocultar elementos de carga de Power BI */
+.report-container [class*="loadingSpinner"],
+.report-container [class*="loadingText"] {
+  display: none !important;
+}
+
+.power-bi-report {
+  touch-action: auto;
+}
