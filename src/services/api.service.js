@@ -4,11 +4,11 @@ import { storage } from "@/auth/utils/storage";
 
 // Determinar la baseURL según el entorno
 // En desarrollo: usar proxy de Vite (/api -> localhost:4000)
-// En producción: usar URL completa de Azure
+// En producción: usar URL completa de Azure desde variable de entorno
 const getBaseURL = () => {
-  // Si estamos en producción (GitHub Pages)
-  if (import.meta.env.PROD) {
-    return "https://backend-eps.azurewebsites.net/api";
+  // Si existe VITE_API_URL, usarla (producción)
+  if (import.meta.env.VITE_API_URL) {
+    return import.meta.env.VITE_API_URL;
   }
   // En desarrollo, usar el proxy
   return "/api";
