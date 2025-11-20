@@ -7,8 +7,12 @@ import Routes from "./routes/routes";
 function App() {
   const [theme, colorMode] = useMode();
 
+  // Obtener el basename desde el import.meta.env para GitHub Pages
+  // En desarrollo será '/', en producción será '/EBI-Frontend'
+  const basename = import.meta.env.BASE_URL || '/';
+
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={basename}>
       <AuthProvider>
         <ColorModeContext.Provider value={colorMode}>
           <ThemeProvider theme={theme}>

@@ -13,6 +13,8 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [react()],
+    // Usar base solo en producción (GitHub Pages), en desarrollo usar '/'
+    base: mode === 'production' ? '/EBI-Frontend/' : '/',
     server: {
       port: parseInt(env.FRONTEND_PORT) || 3001,
       host: "0.0.0.0",
