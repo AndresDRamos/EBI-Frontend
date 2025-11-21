@@ -32,8 +32,11 @@ api.interceptors.response.use(
       storage.clearAuth();
       
       // Redirigir a login solo si no estamos ya en login
-      if (window.location.pathname !== '/login') {
-        window.location.href = '/login';
+      // Para HashRouter, verificar el hash en lugar del pathname
+      const currentHash = window.location.hash;
+      if (!currentHash.includes('/login')) {
+        // Para HashRouter en GitHub Pages, usar el hash correcto
+        window.location.hash = '#/login';
       }
     }
     
