@@ -1,4 +1,4 @@
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import { AuthProvider } from "@/auth/context/Auth.provider";
 import { ColorModeContext, useMode } from "@/context/ColorMode.context";
 import { CssBaseline, ThemeProvider } from "@mui/material";
@@ -7,12 +7,10 @@ import Routes from "./routes/routes";
 function App() {
   const [theme, colorMode] = useMode();
 
-  // Obtener el basename desde el import.meta.env para GitHub Pages
-  // En desarrollo será '/', en producción será '/EBI-Frontend'
-  const basename = import.meta.env.BASE_URL || '/';
-
+  // HashRouter no necesita basename - perfecto para GitHub Pages
+  // Las rutas serán: https://andresdramos.github.io/EBI-Frontend/#/login
   return (
-    <BrowserRouter basename={basename}>
+    <HashRouter>
       <AuthProvider>
         <ColorModeContext.Provider value={colorMode}>
           <ThemeProvider theme={theme}>
@@ -21,7 +19,7 @@ function App() {
           </ThemeProvider>
         </ColorModeContext.Provider>
       </AuthProvider>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
